@@ -1,3 +1,9 @@
 .text-right {
     text-align: initial;
 }
+.text-center {
+    text-align: center;
+}
+.alert.alert-warning.waiting-members {
+    text-align: center;
+}

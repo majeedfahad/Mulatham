@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Setting extends Model
 {
     use HasFactory;
+
+    public static function isCompetetionStart()
+    {
+        $setting = Setting::where('key', 'competetion_start')->first();
+        return $setting->value == 1;
+    }
 }

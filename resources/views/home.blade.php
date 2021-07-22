@@ -14,26 +14,32 @@
                         </div>
                     @endif
 
-                    <table class="table table-hover" id="reports" style="direction: rtl">
-                        <thead class="thead-light">
-                            <tr>
-                                <th style="width: 10%">#</th>
-                                <th style="width: 40%">اليحياوي</th>
-                                <th style="width: 40%">النقاط</th>
-                                <th style="width: 10%">إقصاء</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($users as $user)
+                    @if ($isStart)
+                        <table class="table table-hover" id="reports" style="direction: rtl">
+                            <thead class="thead-light">
                                 <tr>
-                                    <td>{{$user->id}}</td>
-                                    <td>{{$user->fakename}}</td>
-                                    <td>{{$user->score}}</td>
-                                    <td></td>
+                                    <th style="width: 10%">#</th>
+                                    <th style="width: 40%">اليحياوي</th>
+                                    <th style="width: 40%">النقاط</th>
+                                    <th style="width: 10%">إقصاء</th>
                                 </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                                @foreach ($users as $user)
+                                    <tr>
+                                        <td>{{$user->id}}</td>
+                                        <td>{{$user->fakename}}</td>
+                                        <td>{{$user->score}}</td>
+                                        <td></td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    @else
+                        <div class="alert alert-warning waiting-members">
+                            <h1>هلا باليحياوي! ننتظر باقي المتسابقين</h1>
+                        </div>
+                    @endif
                 </div>
             </div>
         </div>
