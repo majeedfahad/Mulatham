@@ -18,7 +18,7 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
-        'email',
+        'fakename',
         'password',
     ];
 
@@ -40,4 +40,9 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function isAlive()
+    {
+        return $this->status == 1;
+    }
 }

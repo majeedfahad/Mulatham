@@ -18,7 +18,8 @@ class CreateUsersTable extends Migration
             $table->string('name')->unique();
             $table->string('fakename')->unique();
             $table->string('password');
-            $table->double('score');
+            $table->double('score')->default(0);
+            $table->integer('status')->default(1);
             $table->rememberToken();
             $table->timestamps();
         });
