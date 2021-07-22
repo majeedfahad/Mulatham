@@ -38,22 +38,22 @@
                                     <div class="col-md-6 col-xs-12 mt-4">
                                         <label for="opt-1">الخيار الأول</label>
                                         <input type="text" name="opt-1" id="" class="form-control">
-                                        <input type="radio" name="correct_answer" id="" class="form-control">
+                                        <input type="radio" name="correct_answer" value="opt-1" id="" class="form-control">
                                     </div>
                                     <div class="col-md-6 col-xs-12 mt-4">
                                         <label for="opt-2">الخيار الثاني</label>
                                         <input type="text" name="opt-2" id="" class="form-control">
-                                        <input type="radio" name="correct_answer" id="" class="form-control">
+                                        <input type="radio" name="correct_answer" value="opt-2" id="" class="form-control">
                                     </div>
                                     <div class="col-md-6 col-xs-12 mt-4">
                                         <label for="opt-3">الخيار الثالث</label>
                                         <input type="text" name="opt-3" id="" class="form-control">
-                                        <input type="radio" name="correct_answer" id="" class="form-control">
+                                        <input type="radio" name="correct_answer" value="opt-3" id="" class="form-control">
                                     </div>
                                     <div class="col-md-6 col-xs-12 mt-4">
                                         <label for="opt-4">الخيار الرابع</label>
                                         <input type="text" name="opt-4" id="" class="form-control">
-                                        <input type="radio" name="correct_answer" id="" class="form-control">
+                                        <input type="radio" name="correct_answer" value="opt-4" id="" class="form-control">
                                     </div>
                                 </div>
                             </div>
