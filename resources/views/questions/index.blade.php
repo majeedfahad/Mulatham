@@ -36,7 +36,7 @@
                                 @foreach ($questions as $question)
                                     <tr>
                                         <td>{{$question->id}}</td>
-                                        <td>{{$question->name}}</td>
+                                        <td>{{$question->title}}</td>
                                         <td><a href="{{route('settings.questions.edit', ['id' => $question->id])}}" class="btn btn-warning">تعديل</a></td>
                                         <td><a href="{{route('settings.questions.destroy', ['id' => $question->id])}}" class="btn btn-danger">حذف</a></td>
                                     </tr>

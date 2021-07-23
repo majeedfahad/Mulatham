@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Answer;
 use App\Models\Question;
+use Exception;
 use Illuminate\Http\Request;
 
 class QuestionController extends Controller
@@ -36,7 +38,25 @@ class QuestionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try {
+            $question = Question::create([
+                'title' => $request['question'],
+                'score' => $request['score']
+            ]);
+            
+            if($request['answer_option'] == 2) {
+                for($i = 1; $i <=4; $i++) {
+                    $answer = new Answer();
+                    $answer->question_id = $question->id;
+                    $answer->title = $request["$i"];
+                    $i == $request['correct_answer'] ? $answer->iscorrect = 1 : $answer->iscorrect = 0;
+                    $answer->save();
+                }
+            }
+        } catch (\Throwable $e) {
+            throw $e;
+        }
+        return redirect()->route('settings.questions.index');
     }
 
     /**

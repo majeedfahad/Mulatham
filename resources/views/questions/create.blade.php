@@ -27,53 +27,58 @@
                                 <input type="text" name="question" class="form-control">
                             </div>
                             <div class="form-group">
-                                <h2>Answer Option</h2>
-                                <select name="answer_option" id="" class="form-control">
+                                <h2>نوع الإجابة</h2>
+                                <select name="answer_option" id="answer_option" class="form-control" onchange="showChoices(this)">
                                     <option value="1">نصي</option>
                                     <option value="2">خيارات</option>
                                 </select>
                             </div>
-                            <div class="form-group options-answer disabled">
+                            <div class="form-group multiple-choice disabled" id="choices-div">
                                 <div class="row p-1">
                                     <div class="col-md-6 col-xs-12 mt-4">
-                                        <label for="opt-1">الخيار الأول</label>
-                                        <input type="text" name="opt-1" id="" class="form-control">
-                                        <input type="radio" name="correct_answer" value="opt-1" id="" class="form-control">
+                                        <label for="1">الخيار الأول</label>
+                                        <input type="text" name="1" id="" class="form-control">
+                                        <input type="radio" name="correct_answer" value="1" id="" class="form-control">
                                     </div>
                                     <div class="col-md-6 col-xs-12 mt-4">
-                                        <label for="opt-2">الخيار الثاني</label>
-                                        <input type="text" name="opt-2" id="" class="form-control">
-                                        <input type="radio" name="correct_answer" value="opt-2" id="" class="form-control">
+                                        <label for="2">الخيار الثاني</label>
+                                        <input type="text" name="2" id="" class="form-control">
+                                        <input type="radio" name="correct_answer" value="2" id="" class="form-control">
                                     </div>
                                     <div class="col-md-6 col-xs-12 mt-4">
-                                        <label for="opt-3">الخيار الثالث</label>
-                                        <input type="text" name="opt-3" id="" class="form-control">
-                                        <input type="radio" name="correct_answer" value="opt-3" id="" class="form-control">
+                                        <label for="3">الخيار الثالث</label>
+                                        <input type="text" name="3" id="" class="form-control">
+                                        <input type="radio" name="correct_answer" value="3" id="" class="form-control">
                                     </div>
                                     <div class="col-md-6 col-xs-12 mt-4">
-                                        <label for="opt-4">الخيار الرابع</label>
-                                        <input type="text" name="opt-4" id="" class="form-control">
-                                        <input type="radio" name="correct_answer" value="opt-4" id="" class="form-control">
+                                        <label for="4">الخيار الرابع</label>
+                                        <input type="text" name="4" id="" class="form-control">
+                                        <input type="radio" name="correct_answer" value="4" id="" class="form-control">
                                     </div>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <h2>Score</h2>
+                                <h2>الدرجة</h2>
                                 <input type="number" name="score" class="form-control">
                             </div>
-                            {{-- <div class="form-group">
-                                <h2>User Groups</h2>
-                                @foreach ($groups as $group)
-                                    <label><input type="checkbox" name="groups[]" id="groups" value="{{$group->id}}">  {{$group->name}}</label>
-                                @endforeach
-                            </div> --}}
                             <div class="form-group">
-                                <button type="submit" class="form-control btn btn-primary">Create</button>
+                                <button type="submit" class="form-control btn btn-primary">إنشاء</button>
                             </div>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
-    </div>    
+    </div>
+    @push('scripts')
+        <script>
+            function showChoices(evt) {
+                if(evt.value == 2) {
+                    $('#choices-div').removeClass('disabled');
+                } else {
+                    $('#choices-div').addClass('disabled');
+                }
+            }
+        </script>
+    @endpush
 @endsection

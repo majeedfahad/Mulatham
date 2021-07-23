@@ -7,3 +7,7 @@
 .alert.alert-warning.waiting-members {
     text-align: center;
 }
+
+.disabled {
+    display: none;
+}
