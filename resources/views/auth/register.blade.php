@@ -14,7 +14,8 @@
             @csrf
             <div class="form-group">
                 <label for="name" class="d-flex text-secondary">الاسم الثلاثي</label>
-                <input id="name" type="text" class="border rounded border-info shadow form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="off" autofocus>
+                <input id="name" type="text" class="border rounded border-info shadow form-control @error('name') is-invalid @enderror" 
+                        name="name" value="{{ old('name') }}" data-toggle="tooltip" data-placement="top" title="بيتم تسجيل الدخول به" required autocomplete="off" autofocus>
 
                 @error('name')
                     <span class="invalid-feedback text-right" role="alert">
@@ -24,7 +25,8 @@
             </div>
             <div class="form-group">
                 <label for="fakename" class="d-flex text-secondary">اللقب</label>
-                <input id="fakename" type="text" class="border rounded border-info shadow form-control @error('fakename') is-invalid @enderror" name="fakename" value="{{ old('fakename') }}" required autocomplete="off" autofocus>
+                <input id="fakename" type="text" class="border rounded border-info shadow form-control @error('fakename') is-invalid @enderror" name="fakename" value="{{ old('fakename') }}" required autocomplete="off" autofocus
+                        data-toggle="tooltip" data-placement="top" title="سري! لا يدري عنه أحد">
 
                 @error('fakename')
                     <span class="invalid-feedback text-right" role="alert">
@@ -34,17 +36,13 @@
             </div>
             <div class="form-group">
                 <label for="password" class="d-flex text-secondary">كلمة المرور</label>
-                <input id="password" type="password" class="border rounded border-info shadow form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+                <input id="password" type="password" class="border rounded border-info shadow form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
 
                 @error('password')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
                     </span>
                 @enderror
-            </div>
-            <div class="form-group">
-                <label for="password-confirm" class="d-flex text-secondary">كلمة المرور</label>
-                <input id="password-confirm" type="password" class="border rounded border-info shadow form-control @error('password-confirm') is-invalid @enderror" name="password-confirm" required autocomplete="current-password">
             </div>
             <button class="btn btn-info text-left mt-2" type="submit" style="background: #476D7C;">كن يحياويًا!</button>
         </form>
