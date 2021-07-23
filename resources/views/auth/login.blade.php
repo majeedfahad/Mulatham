@@ -8,7 +8,7 @@
             <img src="imgs/logo.png" class="myBg">
         @endpush
         <div
-            class="col-10 col-sm-8 col-md-6 offset-1 offset-sm-2 offset-md-3 align-self-center p-5 rounded rounded-lg-0 mt-5">
+            class="col-12 align-self-center p-5 rounded rounded-lg-0 mt-5">
             <h2 class="d-flex d-sm-flex justify-content-center text-info font-weight-light mb-2">
                 <img class="d-flex justify-content-sm-center" src="imgs/logo.png" style="height: 200px;">
             </h2>
