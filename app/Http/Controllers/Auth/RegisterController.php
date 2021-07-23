@@ -53,6 +53,9 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255', 'unique:users'],
             'fakename' => ['required', 'string', 'max:255', 'unique:users'],
             'password' => ['required', 'string'],
+        ], [
+            'name.unique' => 'الاسم مستخدم مسبقًا',
+            'fakename.unique' => 'اللقب مستخدم مسبقًا',
         ]);
     }
 
