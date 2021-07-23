@@ -31,13 +31,14 @@
     <div id="app">
         @stack('background')
         @auth
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-light shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="#" onclick="event.preventDefault()">
+                <a class="navbar-brand text-white" href="#" onclick="event.preventDefault()" class="">
                         أهلًا {{Auth::user()->name}}
                         <a href="{{ route('logout') }}"
+                        class="btn btn-sm btn-outline-info"
                         onclick="event.preventDefault();
-                                      document.getElementById('logout-form').submit();">logout</a>
+                                      document.getElementById('logout-form').submit();">تسجيل الخروج</a>
         
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                             @csrf
