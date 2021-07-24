@@ -42,7 +42,9 @@ class QuestionController extends Controller
         try {
             $question = Question::create([
                 'title' => $request['question'],
-                'score' => $request['score']
+                'score' => $request['score'],
+                'type' => $request['answer_option'],
+                'status' => 0
             ]);
             
             if($request['answer_option'] == 2) {

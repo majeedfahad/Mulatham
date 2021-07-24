@@ -12,6 +12,8 @@ class Question extends Model
     protected $fillable = [
         'title',
         'score',
+        'type',
+        'status',
     ];
 
     public function answers()
