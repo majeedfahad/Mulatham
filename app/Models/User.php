@@ -20,6 +20,7 @@ class User extends Authenticatable
         'name',
         'fakename',
         'password',
+        'order',
     ];
 
     /**
