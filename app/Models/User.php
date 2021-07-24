@@ -50,4 +50,9 @@ class User extends Authenticatable
     {
         return $this->role == 1;
     }
+    
+    public function answers()
+    {
+        return $this->hasMany(AnswerUser::class);
+    }
 }

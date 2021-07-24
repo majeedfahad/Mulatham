@@ -13,4 +13,30 @@ class Question extends Model
         'title',
         'score',
     ];
+
+    public function answers()
+    {
+        return $this->hasMany(Answer::class);
+    }
+
+    public function active()
+    {
+        $this->status = 1;
+        $this->update();
+    }
+    public function deActive()
+    {
+        $this->status = 0;
+        $this->update();
+    }
+
+    public function isActive()
+    {
+        return $this->status == 1;
+    }
+
+    public function isText()
+    {
+        return $this->type == 1;
+    }
 }

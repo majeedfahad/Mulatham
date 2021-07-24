@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddStatusColumnToQuestionsTable extends Migration
+class AddTypeColumnToQuestionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +14,7 @@ class AddStatusColumnToQuestionsTable extends Migration
     public function up()
     {
         Schema::table('questions', function (Blueprint $table) {
-            $table->integer('status')->after('score')->default(0);
+            $table->integer('type')->after('score');
         });
     }
 
@@ -26,7 +26,7 @@ class AddStatusColumnToQuestionsTable extends Migration
     public function down()
     {
         Schema::table('questions', function (Blueprint $table) {
-            $table->dropColumn('status');
+            $table->dropColumn('type');
         });
     }
 }

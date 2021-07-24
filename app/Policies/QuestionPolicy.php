@@ -2,6 +2,7 @@
 
 namespace App\Policies;
 
+use App\Models\AnswerUser;
 use App\Models\Question;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
@@ -9,6 +10,13 @@ use Illuminate\Auth\Access\HandlesAuthorization;
 class QuestionPolicy
 {
     use HandlesAuthorization;
+
+    public function before(User $user, $question)
+    {
+        if($user->isAdmin()){
+            return true;
+        }
+    }
 
     /**
      * Determine whether the user can view any models.
@@ -30,7 +38,11 @@ class QuestionPolicy
      */
     public function view(User $user, Question $question)
     {
-        //
+        if(!$question->isActive()) return false;
+        if($user->answers->map->question->flatten()->contains($question)) return false;
+
+        return true;
+        
     }
 
     /**

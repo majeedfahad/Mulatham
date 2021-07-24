@@ -6,6 +6,7 @@ use App\Models\Answer;
 use App\Models\Question;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class QuestionController extends Controller
 {
@@ -68,6 +69,7 @@ class QuestionController extends Controller
     public function show($id)
     {
         $question = Question::find($id);
+        
         return view('questions.show', compact('question'));
     }
 
@@ -105,6 +107,20 @@ class QuestionController extends Controller
     {
         $question = Question::find($id);
         $question->delete();
+        return back();
+    }
+
+    public function activeQuestion($id)
+    {
+        DB::table('questions')->where('status', 1)->update(['status' => 0]);
+        $question = Question::find($id);
+        $question->active();
+        return back();
+    }
+    public function deActiveQuestion($id)
+    {
+        $question = Question::find($id);
+        $question->deActive();
         return back();
     }
 }

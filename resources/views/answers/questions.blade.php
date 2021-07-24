@@ -36,12 +36,8 @@
                                 @foreach ($questions as $question)
                                     <tr>
                                         <td>{{$question->id}}</td>
-                                        <td><a href="{{route('settings.questions.show', ['id' => $question->id])}}">{{$question->title}}</a></td>
-                                        @if($question->isActive())
-                                            <td><a href="{{route('settings.questions.deActiveQuestion', ['id' => $question->id])}}" class="btn btn-success">إغلاق</a></td>
-                                        @else
-                                            <td><a href="{{route('settings.questions.activeQuestion', ['id' => $question->id])}}" class="btn btn-warning">فتح</a></td>
-                                        @endif
+                                        <td>{{$question->title}}</td>
+                                        <td><a href="{{route('settings.questions.edit', ['id' => $question->id])}}" class="btn btn-warning">تعديل</a></td>
                                         <td><a href="{{route('settings.questions.destroy', ['id' => $question->id])}}" class="btn btn-danger">حذف</a></td>
                                     </tr>
                                 @endforeach

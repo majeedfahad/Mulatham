@@ -19,6 +19,8 @@ class CreateQuestionUserTable extends Migration
             $table->unsignedBigInteger('question_id');
             $table->unsignedBigInteger('answer_id');
 
+            $table->unique(['user_id', 'question_id']);
+
             $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('question_id')->references('id')->on('questions');
             $table->foreign('answer_id')->references('id')->on('answers');

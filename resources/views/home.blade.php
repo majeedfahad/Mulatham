@@ -3,9 +3,6 @@
 
 @section('content')
     <div class="container">
-        <div class="card-header text-right">
-            <h2>قائمة اليحياويين</h2>
-        </div>
 
         @push('background')
             <div class="circle2"></div>
@@ -29,7 +26,7 @@
                     <div class="col-2">{{$user->score}}</div>
                     <div class="col-3">
                         <button type="button" class="btn btn-primary btn-sm" data-toggle="modal"
-                            data-target="#exampleModal" data-whatever="selectedName"
+                            data-target="#exampleModal" data-whatever="{{$user->fakename}}"
                             style="background-color: #b5def5; color: black; border: none;">اقصاء</button>
                     </div>
                     {{-- data-whatever -> Fake Name selected --}}
@@ -48,17 +45,25 @@
                             </div>
                             <div class="modal-body" dir="rtl">
                                 <form>
+                                    <div class="form-group text-right">
+                                        <label for="message-text" class="col-form-label">المدعي:</label>
+                                        <select name="attacker" class="form-control">
+                                            @foreach ($users as $user)
+                                            <option value="{{$user->id}}">{{$user->name}}</option>
+                                            @endforeach
+                                        </select>
+                                        {{-- loop for all users --}}
+                                    </div>
                                     <div class="form-group text-right" dir="rtl">
                                         <label for="recipient-name" class="col-form-label">المتهم:</label>
-                                        <input type="text" class="form-control" id="selectedId" name="fakeId" disabled>
+                                        <input type="text" class="form-control" id="selectedId" name="targetId" disabled>
                                     </div>
                                     <div class="form-group text-right">
                                         <label for="message-text" class="col-form-label">اسمه:</label>
-                                        <select name="nameId" class="form-control">
-                                            <option value="1">يزيد الطويل</option>
-                                            <option value="2">مجيد</option>
-                                            <option value="3">سارة الطويل</option>
-                                            <option value="4">يزيد الطويل</option>
+                                        <select name="targetName" class="form-control">
+                                            @foreach ($users as $user)
+                                            <option value="{{$user->id}}">{{$user->name}}</option>
+                                            @endforeach
                                         </select>
                                         {{-- loop for all users --}}
                                     </div>
@@ -76,20 +81,20 @@
             @push('scripts')
                 <script>
                     $(document).ready(function() {
-                    $('#exampleModal').on('show.bs.modal', function(event) {
-                        var button = $(event.relatedTarget)
-                        var recipient = button.data('whatever')
-                        var modal = $(this)
-                        modal.find('.modal-title').text('New message to ' + recipient)
-                        modal.find('.modal-body input').val(recipient)
-                    })
+                        $('#exampleModal').on('show.bs.modal', function(event) {
+                            var button = $(event.relatedTarget)
+                            var recipient = button.data('whatever')
+                            var modal = $(this)
+                            modal.find('.modal-title').text('New message to ' + recipient)
+                            modal.find('.modal-body input').val(recipient)
+                        })
                     })
                 </script>
             @endpush
         @else
             <div class="col-12 offset-1 align-self-center p-2 rounded rounded-lg-0 mt-3 ml-0">
                 <h2 class="d-flex d-sm-flex justify-content-center text-info font-weight-light mb-2"><img
-                        class="d-flex justify-content-sm-center" src="imgs/logo.png" style="height: 200px;"></h2>
+                        class="d-flex justify-content-sm-center" src="{{asset('imgs/logo.png')}}" style="height: 200px;"></h2>
                 <h2 class="text-center text-white">هلا باليحياوي! ننتظر باقي المتسابقين</h2>
             </div>
         @endif
