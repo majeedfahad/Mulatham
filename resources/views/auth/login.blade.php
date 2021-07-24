@@ -15,7 +15,7 @@
             <form name="login" method="POST" action="{{ route('login') }}" dir="rtl">
                 @csrf
                 <div class="form-group">
-                    <label for="name" class="d-flex text-secondary">الاسم الثلاثي</label>
+                    <label for="name" class="d-flex  text-white">الاسم الثنائي</label>
                     <input id="name" type="text"
                         class="border rounded border-info shadow form-control @error('name') is-invalid @enderror"
                         name="name" value="{{ old('name') }}" required autocomplete="off" autofocus>
@@ -27,7 +27,7 @@
                     @enderror
                 </div>
                 <div class="form-group">
-                    <label for="password" class="d-flex text-secondary">كلمة المرور</label>
+                    <label for="password" class="d-flex  text-white">كلمة المرور</label>
                     <input id="password" type="password"
                         class="border rounded border-info shadow form-control @error('password') is-invalid @enderror"
                         name="password" required autocomplete="current-password">
@@ -38,7 +38,7 @@
                         </span>
                     @enderror
                 </div>
-                <button class="btn btn-info text-left mt-2" type="submit" style="background: #476D7C;">تسجيل</button>
+                <button class="btn btn-info text-left mt-2" type="submit" style="background: #476D7C;">حياك</button>
             </form>
         </div>
     </div>

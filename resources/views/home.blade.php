@@ -22,15 +22,19 @@
                 </div>
 
                 <!-- لوب هنا يا وحش -->
+                @foreach ($users as $user)
                 <div id="table_row" class="row text-center d-flex align-content-center" dir="rtl">
-                    <div class="col-2">1</div>
-                    <div class="col-5">يزييديددديددد</div>
-                    <div class="col-2">45</div>
-                    <div class="col-3"><button type="button" class="btn btn-primary btn-sm" data-toggle="modal"
+                    <div class="col-2">{{$user->id}}</div>
+                    <div class="col-5">{{$user->fakename}}</div>
+                    <div class="col-2">{{$user->score}}</div>
+                    <div class="col-3">
+                        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal"
                             data-target="#exampleModal" data-whatever="selectedName"
-                            style="background-color: #b5def5; color: black; border: none;">اقصاء</button></div>
+                            style="background-color: #b5def5; color: black; border: none;">اقصاء</button>
+                    </div>
                     {{-- data-whatever -> Fake Name selected --}}
                 </div>
+                @endforeach
 
                 <!-- Modal "ما عليك منها لا تلمسها الا اذا تبي تعدل الفورم" -->
                 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
