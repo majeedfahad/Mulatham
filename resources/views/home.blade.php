@@ -58,7 +58,7 @@
                                     <div class="form-group text-right">
                                         <label for="message-text" class="col-form-label">المدعي:</label>
                                         <select name="attacker" class="form-control">
-                                            @foreach ($activeUsers as $user)
+                                            @foreach ($users as $user)
                                             <option value="{{$user->id}}">{{$user->name}}</option>
                                             @endforeach
                                         </select>
@@ -71,7 +71,7 @@
                                     <div class="form-group text-right">
                                         <label for="message-text" class="col-form-label">اسمه:</label>
                                         <select name="target" class="form-control">
-                                            @foreach ($activeUsers as $user)
+                                            @foreach ($users as $user)
                                             <option value="{{$user->id}}">{{$user->name}}</option>
                                             @endforeach
                                         </select>
