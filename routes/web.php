@@ -26,7 +26,7 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::middleware(['auth', 'settings'])->prefix('Settings')->name('settings.')->group(function() {
-    Route::get('/', [SettingsController::class, 'index']);
+    Route::get('/', [SettingsController::class, 'index'])->name('index');
     
     Route::prefix('Question')->name('questions.')->group(function() {
         Route::get('/', [QuestionController::class, 'index'])->name('index');

@@ -35,14 +35,19 @@
             <div class="container">
                 <a class="navbar-brand text-white" href="#" onclick="event.preventDefault()" class="">
                         أهلًا {{Auth::user()->name}}
-                        <a href="{{ route('logout') }}"
-                        class="btn btn-sm btn-outline-info"
-                        onclick="event.preventDefault();
-                                      document.getElementById('logout-form').submit();">تسجيل الخروج</a>
-        
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                            @csrf
-                        </form>
+                        @if (Auth::user()->isAdmin())
+                            <a href="{{route('settings.index')}}" class="btn btn-sm btn-outline-info">الإعدادات</a>
+                        @else
+                            <a href="{{ route('logout') }}"
+                            class="btn btn-sm btn-outline-info"
+                            onclick="event.preventDefault();
+                                        document.getElementById('logout-form').submit();">تسجيل الخروج</a>
+            
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                @csrf
+                            </form>
+                        @endif
+                        
                     </a>
                 </div>
             </nav>
