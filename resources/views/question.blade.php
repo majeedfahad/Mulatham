@@ -10,7 +10,7 @@
             <img src="{{asset('imgs/logo.png')}}" class="myBg">
         @endpush
 
-        <div class="col-12 offset-1 align-self-center p-2 rounded rounded-lg-0 mt-3 ml-0">
+        <div class="col-12 offset-1 align-self-center p-2 rounded rounded-lg-0 mt-5 ml-0">
             <form action="{{route('answerQuestion', ['id' => $question->id])}}" method="POST">
                 @csrf
                 <div class="text-center">
@@ -18,17 +18,23 @@
                 </div>
 
                 @if ($question->isText())
-                    <div>
-                        <input type="text" name="answer" id="" class="border rounded border-info shadow form-control">
+                <div class="form-group">
+                      <input type="text" name="answer" id="" class="border rounded border-info shadow form-control mt-5" placeholder="امممم ... مدري وش اكتب بس حط هنا جوابك"
+                      style="height: 3.5rem;">
                     </div>
                 @else
+                <div class="container">
+
                     @foreach ($question->answers as $answer)
-                        <button class="btn btn-info" id="{{$answer->id}}" type="button" onclick="getAnswer(this)">{{$answer->title}}</button>
+                    <div class="row mt-4">
+                        <button class="col btn btn-outline-info text-white" type="button" id="{{$answer->id}}" onclick=" getAnswer(this)">{{$answer->title}}</button>
+                    </div>                        
                     @endforeach
-                    <input type="hidden" name="selectedAnswer" value="0" id="answer">
+                </div>
+                <input type="hidden" name="selectedAnswer" value="0" id="answer">
                 @endif
-            
-                <input type="submit" value="إرسال" class="btn btn-primary">
+                <div class="mt-5">
+                <input type="submit" value="إرسال" class="btn btn-outline-warning col mt-5">
             </form>
         </div>
     </div>
