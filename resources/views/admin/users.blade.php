@@ -7,8 +7,8 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="row">
-                            <div class="col-md-12 col-sm-12">
-                                <h2>الأسئلة</h2>
+                            <div class="col-md-12">
+                                <h2>المتسابقين</h2>
                             </div>
                         </div>
                     </div>
@@ -24,20 +24,16 @@
                             <thead>
                                 <tr>
                                     <th scope="col">#</th>
-                                    <th scope="col">الجواب</th>
-                                    <th scope="col"></th>
-                                    <th scope="col"></th>
+                                    <th scope="col">الاسم</th>
+                                    <th scope="col">اللقب</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($question->answersUser as $answer)
+                                @foreach ($users as $user)
                                     <tr>
-                                        <td>{{$answer->id}}</td>
-                                        <td><span>{{$answer->answer}}</span></td>
-                                        @if(!$answer->hasAnswered())
-                                            <td><a href="{{route('settings.questions.correctAnswer', ['id' => $answer->id])}}" class="btn btn-success">صحيحة</a></td>
-                                            <td><a href="{{route('settings.questions.wrongAnswer', ['id' => $answer->id])}}" class="btn btn-warning">خاطئة</a></td>
-                                        @endif
+                                        <td>{{$user->id}}</td>
+                                        <td>{{$user->name}}</td>
+                                        <td>{{$user->fakename}}</td>
                                     </tr>
                                 @endforeach
                             </tbody>

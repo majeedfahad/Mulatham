@@ -36,12 +36,14 @@
                                 @foreach ($questions as $question)
                                     <tr>
                                         <td>{{$question->id}}</td>
-                                        <td><a href="{{route('settings.questions.show', ['id' => $question->id])}}">{{$question->title}}</a></td>
+                                        <td><a href="{{route('settings.questions.show', ['id' => $question->id])}}" style="{{$question->type == 2 ? 'color: black' : ''}}" onclick="{{$question->type == 2 ? 'event.preventDefault()' : ''}}">{{$question->title}}</a></td>
+
                                         @if($question->isActive())
                                             <td><a href="{{route('settings.questions.deActiveQuestion', ['id' => $question->id])}}" class="btn btn-success">إغلاق</a></td>
                                         @else
                                             <td><a href="{{route('settings.questions.activeQuestion', ['id' => $question->id])}}" class="btn btn-warning">فتح</a></td>
                                         @endif
+
                                         <td><a href="{{route('settings.questions.destroy', ['id' => $question->id])}}" class="btn btn-danger">حذف</a></td>
                                     </tr>
                                 @endforeach

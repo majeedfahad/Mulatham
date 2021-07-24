@@ -37,6 +37,7 @@
                         أهلًا {{Auth::user()->name}}
                         @if (Auth::user()->isAdmin())
                             <a href="{{route('settings.index')}}" class="btn btn-sm btn-outline-info">الإعدادات</a>
+                            <a href="{{route('home')}}" class="btn btn-sm btn-outline-info">الرئيسية</a>
                         @else
                             <a href="{{ route('logout') }}"
                             class="btn btn-sm btn-outline-info"

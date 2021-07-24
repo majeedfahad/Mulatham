@@ -17,7 +17,7 @@ class CreateQuestionUserTable extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('question_id');
-            $table->unsignedBigInteger('answer_id');
+            $table->unsignedBigInteger('answer_id')->nullable();
 
             $table->unique(['user_id', 'question_id']);
 

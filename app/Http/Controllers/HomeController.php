@@ -29,9 +29,10 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $question = Question::where('status', 1)->first();
         $users = User::where('role', '<>', 1)->get();
         $isStart = Setting::isCompetetionStart();
-        return view('home', compact('users', 'isStart'));
+        return view('home', compact('users', 'isStart', 'question'));
     }
 
     public function question($id)
@@ -44,12 +45,18 @@ class HomeController extends Controller
     public function answerQuestion(Request $request, $question_id)
     {
         $user = Auth::user();
-        // dd($request['answer']);
-        $answer = AnswerUser::create([
-            'user_id' => $user->id,
-            'question_id' => $question_id,
-            'answer_id' => $request['selectedAnswer'],
-        ]);
+        $answer = new AnswerUser();
+        $answer->user_id = $user->id;
+        $answer->question_id = $question_id;
+
+         
+        if($request['answer']) $answer->answer = $request['answer'];
+
+        $answer->answer;
+        $answer->answer_id = $request['answer'] ? null : $request['selectedAnswer'];
+        
+        $answer->save();
+
         $answer->assignScore($question_id);
         return redirect()->route('home');
 

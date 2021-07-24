@@ -55,4 +55,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(AnswerUser::class);
     }
+
+    public function hasAnsweredQuestion($question)
+    {
+        return $this->answers->map->question->flatten()->contains($question);
+    }
 }

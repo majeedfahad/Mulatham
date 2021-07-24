@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Setting;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -17,6 +18,12 @@ class SettingsController extends Controller
     {
         $settings = DB::table('settings')->get();
         return view('admin.settings', compact('settings'));
+    }
+
+    public function users()
+    {
+        $users = User::where('role', 0)->get();
+        return view('admin.users', compact('users'));
     }
 
     public function activeSetting($id)

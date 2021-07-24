@@ -31,6 +31,7 @@ Route::post('answerQuestion/{id}', [App\Http\Controllers\HomeController::class, 
 Route::middleware(['auth', 'settings'])->prefix('Settings')->name('settings.')->group(function() {
     Route::get('/', [SettingsController::class, 'index'])->name('index');
     Route::get('/admin', [SettingsController::class, 'admin'])->name('admin');
+    Route::get('/users', [SettingsController::class, 'users'])->name('users');
     Route::get('/deActiveSetting/{id}', [SettingsController::class, 'deActiveSetting'])->name('deActiveSetting');
     Route::get('/activeSetting/{id}', [SettingsController::class, 'activeSetting'])->name('activeSetting');
     
@@ -44,6 +45,8 @@ Route::middleware(['auth', 'settings'])->prefix('Settings')->name('settings.')->
         Route::get('destroy/{id}', [QuestionController::class, 'destroy'])->name('destroy');
         Route::get('activeQuestion/{id}', [QuestionController::class, 'activeQuestion'])->name('activeQuestion');
         Route::get('deActiveQuestion/{id}', [QuestionController::class, 'deActiveQuestion'])->name('deActiveQuestion');
+        Route::get('correctAnswer/{id}', [QuestionController::class, 'correctAnswer'])->name('correctAnswer');
+        Route::get('wrongAnswer/{id}', [QuestionController::class, 'wrongAnswer'])->name('wrongAnswer');
     });
 });
 

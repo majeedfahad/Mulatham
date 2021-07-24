@@ -11,9 +11,9 @@
         @endpush
         @if ($isStart || Auth::user()->isAdmin())
             <div class="col-12 p-0 rounded rounded-lg-0 my-2" id="myTable">
+                @include('new-question')
                 <div id="table_header" class="row text-center d-flex align-content-center" dir="rtl">
-                    <div class="col-2">#</div>
-                    <div class="col-5">اليحياوي</div>
+                    <div class="col-7">اليحياوي</div>
                     <div class="col-2">النقاط</div>
                     @if (Auth::user()->isAdmin())
                         <div class="col-3">اقصاء</div>
@@ -23,8 +23,7 @@
                 <!-- لوب هنا يا وحش -->
                 @foreach ($users as $user)
                 <div id="table_row" class="row text-center d-flex align-content-center" dir="rtl">
-                    <div class="col-2">{{$user->id}}</div>
-                    <div class="col-5">{{$user->fakename}}</div>
+                    <div class="col-7">{{$user->fakename}}</div>
                     <div class="col-2">{{$user->score}}</div>
                     @if (Auth::user()->isAdmin())
                     <div class="col-3">

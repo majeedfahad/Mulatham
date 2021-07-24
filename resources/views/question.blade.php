@@ -25,9 +25,9 @@
                     @foreach ($question->answers as $answer)
                         <button class="btn btn-info" id="{{$answer->id}}" type="button" onclick="getAnswer(this)">{{$answer->title}}</button>
                     @endforeach
+                    <input type="hidden" name="selectedAnswer" value="0" id="answer">
                 @endif
             
-                <input type="hidden" name="selectedAnswer" value="0" id="answer">
                 <input type="submit" value="إرسال" class="btn btn-primary">
             </form>
         </div>

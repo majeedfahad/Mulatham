@@ -39,7 +39,15 @@ class AnswerUser extends Model
 
     public function assignScore($question_id)
     {
-        $this->isCorrect() ? $this->score = Question::find($question_id)->score : $this->score = 0;
+        $question = Question::find($question_id);
+        if(!$question->isText()) {
+            $this->isCorrect() ? $this->score = Question::find($question_id)->score : $this->score = 0;
+        }
         $this->update();
+    }
+
+    public function hasAnswered()
+    {
+        return $this->score != -1;
     }
 }

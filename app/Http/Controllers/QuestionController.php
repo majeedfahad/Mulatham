@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Answer;
+use App\Models\AnswerUser;
 use App\Models\Question;
 use Exception;
 use Illuminate\Http\Request;
@@ -71,7 +72,6 @@ class QuestionController extends Controller
     public function show($id)
     {
         $question = Question::find($id);
-        
         return view('questions.show', compact('question'));
     }
 
@@ -123,6 +123,23 @@ class QuestionController extends Controller
     {
         $question = Question::find($id);
         $question->deActive();
+        return back();
+    }
+
+    public function correctAnswer($answer_id)
+    {
+
+        $answer = AnswerUser::find($answer_id);
+        $answer->score = $answer->question->score;
+        $answer->update();
+        return back();
+    }
+
+    public function wrongAnswer($answer_id)
+    {
+        $answer = AnswerUser::find($answer_id);
+        $answer->score = 0;
+        $answer->update();
         return back();
     }
 }

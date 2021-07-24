@@ -25,7 +25,7 @@
                                 <a href="{{route('settings.questions.index')}}" class="btn btn-outline-primary btn-lg" style="width: 100%">الأسئلة</a>
                             </div>
                             <div class="col-md-4">
-                                <a href="#" class="btn btn-outline-primary btn-lg" style="width: 100%">الأجوبة</a>
+                                <a href="{{route('settings.users')}}" class="btn btn-outline-primary btn-lg" style="width: 100%">المتسابقين</a>
                             </div>
                             <div class="col-md-4">
                                 <a href="{{route('settings.admin')}}" class="btn btn-outline-primary btn-lg" style="width: 100%">إعدادات المسابقة</a>
