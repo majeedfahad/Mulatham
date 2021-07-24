@@ -69,4 +69,10 @@ class User extends Authenticatable
             $this->update();
         }
     }
+
+    public function eliminate()
+    {
+        $this->status = 0;
+        $this->update();
+    }
 }

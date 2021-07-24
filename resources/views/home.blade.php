@@ -21,7 +21,7 @@
                 </div>
 
                 <!-- لوب هنا يا وحش -->
-                @foreach ($users as $user)
+                @foreach ($activeUsers as $user)
                 <div id="table_row" class="row text-center d-flex align-content-center" dir="rtl">
                     <div class="col-7">{{$user->fakename}}</div>
                     <div class="col-2">{{$user->score}}</div>
@@ -35,8 +35,16 @@
                     {{-- data-whatever -> Fake Name selected --}}
                 </div>
                 @endforeach
+                @foreach ($eliminatedUsers as $user)
+                <div id="table_row" class="row text-center d-flex align-content-center" dir="rtl" style="background-color: #900808">
+                    <div class="col-7">{{$user->fakename}}</div>
+                    <div class="col-2">{{$user->score}}</div>
+                </div>
+                @endforeach
 
                 <!-- Modal "ما عليك منها لا تلمسها الا اذا تبي تعدل الفورم" -->
+                <form action="{{route('settings.elimination')}}" method="POST">
+                    @csrf
                 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
                     aria-hidden="true">
                     <div class="modal-dialog">
@@ -47,11 +55,10 @@
                                 </button>
                             </div>
                             <div class="modal-body" dir="rtl">
-                                <form>
                                     <div class="form-group text-right">
                                         <label for="message-text" class="col-form-label">المدعي:</label>
                                         <select name="attacker" class="form-control">
-                                            @foreach ($users as $user)
+                                            @foreach ($activeUsers as $user)
                                             <option value="{{$user->id}}">{{$user->name}}</option>
                                             @endforeach
                                         </select>
@@ -59,26 +66,26 @@
                                     </div>
                                     <div class="form-group text-right" dir="rtl">
                                         <label for="recipient-name" class="col-form-label">المتهم:</label>
-                                        <input type="text" class="form-control" id="selectedId" name="targetId" disabled>
+                                        <input type="text" class="form-control" id="selectedId" name="fakename" readonly>
                                     </div>
                                     <div class="form-group text-right">
                                         <label for="message-text" class="col-form-label">اسمه:</label>
-                                        <select name="targetName" class="form-control">
-                                            @foreach ($users as $user)
+                                        <select name="target" class="form-control">
+                                            @foreach ($activeUsers as $user)
                                             <option value="{{$user->id}}">{{$user->name}}</option>
                                             @endforeach
                                         </select>
                                         {{-- loop for all users --}}
                                     </div>
-                                </form>
-                            </div>
-                            <div class="modal-footer" dir="rtl">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">الغاء</button>
-                                <button type="button" class="btn btn-primary">اتهام</button>
+                                </div>
+                                <div class="modal-footer" dir="rtl">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">الغاء</button>
+                                    <button type="submit" class="btn btn-primary">اتهام</button>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                </form>
             </div>
 
             @push('scripts')
@@ -90,6 +97,7 @@
                             var modal = $(this)
                             modal.find('.modal-title').text('New message to ' + recipient)
                             modal.find('.modal-body input').val(recipient)
+                            console.log($("input[name=fakename]").val());
                         })
                     })
                 </script>

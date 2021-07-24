@@ -50,7 +50,6 @@
                                 @csrf
                             </form>
                         @endif
-                        
                     </a>
                 </div>
             </nav>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Elimination;
 use App\Models\Setting;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -39,5 +40,16 @@ class SettingsController extends Controller
         $setting->value = 0;
         $setting->update();
         return back();
+    }
+
+    public function elimination(Request $request)
+    {
+        $attacker = User::find($request['attacker']);
+        $target = User::find($request['target']);
+        $result = Elimination::fight($attacker, $target, $request['fakename']);
+
+        if($result) 
+            return back()->with(['success' => 'صح عليك! مبروك عليك نقاطه']);
+        return back()->with(['failed' => 'لاااي لاي لاي لاااي، فمان الله ونقاطك راحت له']);
     }
 }

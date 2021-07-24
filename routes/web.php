@@ -34,6 +34,8 @@ Route::middleware(['auth', 'settings'])->prefix('Settings')->name('settings.')->
     Route::get('/users', [SettingsController::class, 'users'])->name('users');
     Route::get('/deActiveSetting/{id}', [SettingsController::class, 'deActiveSetting'])->name('deActiveSetting');
     Route::get('/activeSetting/{id}', [SettingsController::class, 'activeSetting'])->name('activeSetting');
+
+    Route::post('elimination', [SettingsController::class, 'elimination'])->name('elimination');
     
     Route::prefix('Question')->name('questions.')->group(function() {
         Route::get('/', [QuestionController::class, 'index'])->name('index');
