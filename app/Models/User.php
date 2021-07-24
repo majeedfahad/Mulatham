@@ -60,4 +60,13 @@ class User extends Authenticatable
     {
         return $this->answers->map->question->flatten()->contains($question);
     }
+
+    public function assignQuestionScore($question_id)
+    {
+        $answer = $this->answers()->where('question_id', $question_id)->first();
+        if($answer) {
+            $this->score += $answer->score;
+            $this->update();
+        }
+    }
 }

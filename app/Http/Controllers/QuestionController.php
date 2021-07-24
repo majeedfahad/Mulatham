@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Answer;
 use App\Models\AnswerUser;
 use App\Models\Question;
+use App\Models\User;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -123,6 +124,10 @@ class QuestionController extends Controller
     {
         $question = Question::find($id);
         $question->deActive();
+        $users = User::where('role', 0)->get();
+        foreach ($users as $user) {
+            $user->assignQuestionScore($id);
+        }
         return back();
     }
 

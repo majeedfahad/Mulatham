@@ -20,7 +20,7 @@
                 @if ($question->isText())
                 <div class="form-group">
                       <input type="text" name="answer" id="" class="border rounded border-info shadow form-control mt-5" placeholder="امممم ... مدري وش اكتب بس حط هنا جوابك"
-                      style="height: 3.5rem;">
+                      style="height: 3.5rem;" autocomplete="off">
                     </div>
                 @else
                 <div class="container">

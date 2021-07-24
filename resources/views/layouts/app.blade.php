@@ -34,11 +34,13 @@
         <nav class="navbar navbar-expand-md navbar-light shadow-sm">
             <div class="container">
                 <a class="navbar-brand text-white" href="#" onclick="event.preventDefault()" class="">
-                        أهلًا {{Auth::user()->name}}
+                        
                         @if (Auth::user()->isAdmin())
+                            هلا بالمدير
                             <a href="{{route('settings.index')}}" class="btn btn-sm btn-outline-info">الإعدادات</a>
                             <a href="{{route('home')}}" class="btn btn-sm btn-outline-info">الرئيسية</a>
                         @else
+                            أهلًا {{Auth::user()->name}}
                             <a href="{{ route('logout') }}"
                             class="btn btn-sm btn-outline-info"
                             onclick="event.preventDefault();
