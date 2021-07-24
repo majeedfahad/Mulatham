@@ -30,6 +30,9 @@ Route::post('answerQuestion/{id}', [App\Http\Controllers\HomeController::class, 
 
 Route::middleware(['auth', 'settings'])->prefix('Settings')->name('settings.')->group(function() {
     Route::get('/', [SettingsController::class, 'index'])->name('index');
+    Route::get('/admin', [SettingsController::class, 'admin'])->name('admin');
+    Route::get('/deActiveSetting/{id}', [SettingsController::class, 'deActiveSetting'])->name('deActiveSetting');
+    Route::get('/activeSetting/{id}', [SettingsController::class, 'activeSetting'])->name('activeSetting');
     
     Route::prefix('Question')->name('questions.')->group(function() {
         Route::get('/', [QuestionController::class, 'index'])->name('index');

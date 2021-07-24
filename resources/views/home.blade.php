@@ -15,7 +15,9 @@
                     <div class="col-2">#</div>
                     <div class="col-5">اليحياوي</div>
                     <div class="col-2">النقاط</div>
-                    <div class="col-3">اقصاء</div>
+                    @if (Auth::user()->isAdmin())
+                        <div class="col-3">اقصاء</div>
+                    @endif
                 </div>
 
                 <!-- لوب هنا يا وحش -->
@@ -24,11 +26,13 @@
                     <div class="col-2">{{$user->id}}</div>
                     <div class="col-5">{{$user->fakename}}</div>
                     <div class="col-2">{{$user->score}}</div>
+                    @if (Auth::user()->isAdmin())
                     <div class="col-3">
                         <button type="button" class="btn btn-primary btn-sm" data-toggle="modal"
                             data-target="#exampleModal" data-whatever="{{$user->fakename}}"
                             style="background-color: #b5def5; color: black; border: none;">اقصاء</button>
                     </div>
+                    @endif
                     {{-- data-whatever -> Fake Name selected --}}
                 </div>
                 @endforeach
