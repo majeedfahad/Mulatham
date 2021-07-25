@@ -60,7 +60,7 @@ class HomeController extends Controller
         $answer->save();
 
         $answer->assignScore($question_id);
-        return redirect()->route('home');
+        return redirect()->route('home')->with(['success' => 'فالك الاجابة الصح']);
 
     }
 }
