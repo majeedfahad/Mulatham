@@ -24,9 +24,9 @@
                 @foreach ($activeUsers as $user)
                 <div id="table_row" class="row text-center d-flex align-content-center" dir="rtl">
                     <div class="col-7">{{$user->fakename}}</div>
-                    <div class="col-2">{{$user->score}}</div>
+                    <div class="col-1">{{$user->score}}</div>
                     @if (Auth::user()->isAdmin())
-                    <div class="col-3">
+                    <div class="col-4">
                         <button type="button" class="btn btn-primary btn-sm" data-toggle="modal"
                             data-target="#exampleModal" data-whatever="{{$user->fakename}}"
                             style="background-color: #b5def5; color: black; border: none;">اقصاء</button>
@@ -36,9 +36,10 @@
                 </div>
                 @endforeach
                 @foreach ($eliminatedUsers as $user)
-                <div id="table_row" class="row text-center d-flex align-content-center" dir="rtl" style="background-color: #900808">
+                <div id="table_row" class="row text-center d-flex align-content-center text-white" dir="rtl" style="background-color: #900808">
                     <div class="col-7">{{$user->fakename}}</div>
-                    <div class="col-2">{{$user->score}}</div>
+                    <div class="col-1">{{$user->score}}</div>
+                    <div class="col-4">{{$user->name}}</div>
                 </div>
                 @endforeach
 
