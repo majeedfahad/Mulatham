@@ -76,4 +76,10 @@ class User extends Authenticatable
         $this->status = 0;
         $this->update();
     }
+
+    public function assignEliminationScore($score)
+    {
+        $this->score += $score;
+        $this->update();
+    }
 }

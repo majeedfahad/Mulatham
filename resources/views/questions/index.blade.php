@@ -36,7 +36,7 @@
                                 @foreach ($questions as $question)
                                     <tr>
                                         <td>{{$question->id}}</td>
-                                        <td><a href="{{route('settings.questions.show', ['id' => $question->id])}}" style="{{$question->type == 2 ? 'color: black' : ''}}" onclick="{{$question->type == 2 ? 'event.preventDefault()' : ''}}">{{$question->title}}</a></td>
+                                        <td><a href="{{route('settings.questions.show', ['id' => $question->id])}}" style="{{$question->type == 2 ? 'color: black' : ''}}" onclick="{{$question->type == 2 ? 'event.preventDefault()' : ''}}">{!! nl2br(e($question->title)) !!}</a></td>
 
                                         @if($question->isActive())
                                             <td><a href="{{route('settings.questions.deActiveQuestion', ['id' => $question->id])}}" class="btn btn-success">إغلاق</a></td>

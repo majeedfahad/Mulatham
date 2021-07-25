@@ -14,7 +14,7 @@
             <form action="{{route('answerQuestion', ['id' => $question->id])}}" method="POST">
                 @csrf
                 <div class="text-center">
-                    <h3 class="question">{{$question->title}}</h3>
+                    <h3 class="question">{!! nl2br(e($question->title)) !!}</h3>
                 </div>
 
                 @if ($question->isText())

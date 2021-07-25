@@ -45,8 +45,9 @@ class SettingsController extends Controller
     public function elimination(Request $request)
     {
         $attacker = User::find($request['attacker']);
-        $target = User::find($request['target']);
-        $result = Elimination::fight($attacker, $target, $request['fakename']);
+        $target = User::where('fakename',$request['fakename'])->first();
+        $targetName = $request['target'];
+        $result = Elimination::fight($attacker, $target, $targetName);
 
         if($result) 
             return back()->with(['success' => 'صح عليك! مبروك عليك نقاطه']);

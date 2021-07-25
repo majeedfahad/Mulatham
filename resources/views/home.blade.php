@@ -72,7 +72,7 @@
                                         <label for="message-text" class="col-form-label">اسمه:</label>
                                         <select name="target" class="form-control">
                                             @foreach ($users as $user)
-                                            <option value="{{$user->id}}">{{$user->name}}</option>
+                                            <option value="{{$user->name}}">{{$user->name}}</option>
                                             @endforeach
                                         </select>
                                         {{-- loop for all users --}}

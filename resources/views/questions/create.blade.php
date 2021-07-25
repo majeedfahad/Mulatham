@@ -24,7 +24,7 @@
                             @csrf
                             <div class="form-group">
                                 <h2>اكتب السؤال</h2>
-                                <input type="text" name="question" class="form-control">
+                                <textarea name="question" class="form-control" id="" cols="30" rows="4"></textarea>
                             </div>
                             <div class="form-group">
                                 <h2>نوع الإجابة</h2>
