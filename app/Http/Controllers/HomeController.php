@@ -33,7 +33,7 @@ class HomeController extends Controller
     {
         $question = Question::where('status', 1)->first();
         $users = User::where('role', '<>', 1)->where('status', 1)->get();
-        $activeUsers = User::where('role', '<>', 1)->where('status', 1)->orderBy('order', 'ASC')->get();
+        $activeUsers = User::where('role', '<>', 1)->where('status', 1)->orderBy('score', 'desc')->get();
         $eliminatedUsers = User::where('role', '<>', 1)->where('status', 0)->get();
         $isStart = Setting::isCompetetionStart();
         return view('home', compact('users','activeUsers', 'eliminatedUsers', 'isStart', 'question'));
