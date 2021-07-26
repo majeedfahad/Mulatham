@@ -18,7 +18,7 @@ class Elimination extends Model
         if(Elimination::isSuccess($target, $targetName)) {
             $elimination->status = 'SUCCESS';
             $elimination->points = $target->score;
-            $attacker->assignEliminationScore($target->score);
+            // $attacker->assignEliminationScore($target->score);
             $target->eliminate();
             $result = true;
         } else {
