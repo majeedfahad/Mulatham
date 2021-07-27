@@ -23,17 +23,17 @@
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th scope="col">#</th>
                                     <th scope="col">الاسم</th>
                                     <th scope="col">اللقب</th>
+                                    <th scope="col">المجموع</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($users as $user)
-                                    <tr>
-                                        <td>{{$user->id}}</td>
+                                    <tr style="{{$user->status == 1 ? 'background-color: green; color: white' : ''}}">
                                         <td>{{$user->name}}</td>
                                         <td>{{$user->fakename}}</td>
+                                        <td>{{$user->getTotalScore()}}</td>
                                     </tr>
                                 @endforeach
                             </tbody>

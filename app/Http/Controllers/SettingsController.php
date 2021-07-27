@@ -23,7 +23,7 @@ class SettingsController extends Controller
 
     public function users()
     {
-        $users = User::where('role', 0)->get();
+        $users = User::where('role', 0)->orderBy('status', 'desc')->get();
         return view('admin.users', compact('users'));
     }
 

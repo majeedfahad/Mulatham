@@ -38,7 +38,7 @@
                 @foreach ($eliminatedUsers as $user)
                 <div id="table_row" class="row text-center d-flex align-content-center text-white" dir="rtl" style="background-color: #900808">
                     <div class="col-7">{{$user->fakename}}</div>
-                    <div class="col-1">{{$user->score}}</div>
+                    <div class="col-1">{{$user->getTotalScore()}}</div>
                     <div class="col-4">{{$user->name}}</div>
                 </div>
                 @endforeach

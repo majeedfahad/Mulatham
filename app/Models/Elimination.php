@@ -17,14 +17,14 @@ class Elimination extends Model
         $elimination->target_id = $target->id;
         if(Elimination::isSuccess($target, $targetName)) {
             $elimination->status = 'SUCCESS';
-            $elimination->points = $target->score;
-            // $attacker->assignEliminationScore($target->score);
+            $elimination->points = $target->getTotalScore();
+            $attacker->assignSuccessEliminationScore($target->getTotalScore());
             $target->eliminate();
             $result = true;
         } else {
             $elimination->status = 'FAILED';
             $elimination->points = $attacker->score;
-            $target->assignEliminationScore($attacker->score);
+            $target->assignFailedEliminationScore($attacker->score);
             $attacker->eliminate();
             $result = false;
         }

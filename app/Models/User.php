@@ -77,9 +77,15 @@ class User extends Authenticatable
         $this->update();
     }
 
-    public function assignEliminationScore($score)
+    public function assignFailedEliminationScore($score)
     {
         $this->score += $score;
+        $this->update();
+    }
+
+    public function assignSuccessEliminationScore($score)
+    {
+        $this->hidden_score += $score;
         $this->update();
     }
 
@@ -89,5 +95,10 @@ class User extends Authenticatable
             return true;
         }
         return false;
+    }
+
+    public function getTotalScore()
+    {
+        return $this->score + $this->hidden_score;
     }
 }
