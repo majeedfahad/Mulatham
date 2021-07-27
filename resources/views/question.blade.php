@@ -13,6 +13,11 @@
         <div class="col-12 offset-1 align-self-center p-2 rounded rounded-lg-0 mt-5 ml-0">
             <form action="{{route('answerQuestion', ['id' => $question->id])}}" method="POST">
                 @csrf
+                <div class="text-center text-white mb-3" style="font-size: 2rem">
+                    <span>
+                        نقاط السؤال: {{$question->score}}
+                    </span>
+                </div>
                 <div class="text-center">
                     <h3 class="question">{!! nl2br(e($question->title)) !!}</h3>
                 </div>

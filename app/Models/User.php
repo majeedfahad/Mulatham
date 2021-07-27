@@ -82,4 +82,12 @@ class User extends Authenticatable
         $this->score += $score;
         $this->update();
     }
+
+    public function isEligibleToAnswer($question)
+    {
+        if($this->isAlive() && !$this->hasAnsweredQuestion($question)) {
+            return true;
+        }
+        return false;
+    }
 }

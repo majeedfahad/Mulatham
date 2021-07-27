@@ -39,9 +39,8 @@ class QuestionPolicy
     public function view(User $user, Question $question)
     {
         if(!$question->isActive()) return false;
-        if($user->answers->map->question->flatten()->contains($question)) return false;
 
-        return true;
+        return $user->isEligibleToAnswer($question);
         
     }
 

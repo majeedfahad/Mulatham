@@ -1,4 +1,4 @@
-@if(!Auth::user()->isAdmin() && $question && !Auth::user()->hasAnsweredQuestion($question))
+@if(!Auth::user()->isAdmin() && $question && Auth::user()->isEligibleToAnswer($question))
         <div class="col-md-12  alert alert-warning text-center">
             فيه سؤال ينتظر اجابتك! ادخل عليه <a href="{{route('question', ['id' => $question->id])}}">من هنا</a>
         </div>
