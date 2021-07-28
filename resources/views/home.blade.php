@@ -9,7 +9,7 @@
             <div class="circle1"></div>
             <img src="imgs/logo.png" class="myBg">
         @endpush
-        @if ($isStart || Auth::user()->isAdmin())
+        @if (Settings::isCompetetionStart() || Auth::user()->isAdmin())
             <div class="col-12 p-0 rounded rounded-lg-0 my-2" id="myTable">
                 @include('new-question')
                 <div id="table_header" class="row text-center d-flex align-content-center" dir="rtl">
@@ -103,6 +103,20 @@
                     })
                 </script>
             @endpush
+        @elseif(Settings::isCompetetionEnd())
+            <div class="col-12 offset-1 align-self-center p-2 rounded rounded-lg-0 mt-3 ml-0">
+                <h2 class="d-flex d-sm-flex justify-content-center text-info font-weight-light mb-2"><img
+                        class="d-flex justify-content-sm-center" src="{{asset('imgs/logo.png')}}" style="height: 200px;"></h2>
+                <h2 class="text-center text-white">شكرًا لتفاعلكم!</h2>
+                <h2 class="text-center text-white">ونحيي الفائزين:</h2>
+                @foreach ($winners as $winner)
+                <div id="table_row" class="row text-center d-flex align-content-center" dir="rtl">
+                    <div class="col-6">{{$winner->name}}</div>
+                    <div class="col-4">{{$winner->fakename}}</div>
+                    <div class="col-2">{{$winner->getTotalScore()}}</div>
+                </div>
+                @endforeach
+            </div>
         @else
             <div class="col-12 offset-1 align-self-center p-2 rounded rounded-lg-0 mt-3 ml-0">
                 <h2 class="d-flex d-sm-flex justify-content-center text-info font-weight-light mb-2"><img

@@ -101,4 +101,14 @@ class User extends Authenticatable
     {
         return $this->score + $this->hidden_score;
     }
+
+    public static function getWinners()
+    {
+        $users = User::where('status', 1)->get();
+        $collection = collect($users);
+        $winners = $collection->sortByDesc(function ($user, $key) {
+            return [$user->getTotalScore(), 'desc'];
+        });
+        return $winners->values()->all();
+    }
 }

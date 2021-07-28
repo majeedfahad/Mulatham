@@ -10,6 +10,7 @@ use Exception;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Gate;
 
 class HomeController extends Controller
@@ -32,11 +33,13 @@ class HomeController extends Controller
     public function index()
     {
         $question = Question::where('status', 1)->first();
-        $users = User::where('role', '<>', 1)->where('status', 1)->get();
-        $activeUsers = User::where('role', '<>', 1)->where('status', 1)->orderBy('score', 'desc')->get();
-        $eliminatedUsers = User::where('role', '<>', 1)->where('status', 0)->get();
-        $isStart = Setting::isCompetetionStart();
-        return view('home', compact('users','activeUsers', 'eliminatedUsers', 'isStart', 'question'));
+        $listOfUsers = User::where('role', '<>', 1);
+        $users = $listOfUsers->where('status', 1)->get();
+        $activeUsers = $listOfUsers->where('status', 1)->orderBy('score', 'desc')->get();
+        $eliminatedUsers = User::where('status', 0)->get();
+        // $winners = $listOfUsers->where('status', 1)->orderBy(DB::raw("`score` + `hidden_score`"), 'desc')->get();
+        $winners = User::getWinners();
+        return view('home', compact('users','activeUsers', 'eliminatedUsers', 'question', 'winners'));
     }
 
     public function question($id)

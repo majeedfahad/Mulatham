@@ -14,4 +14,9 @@ class Setting extends Model
         $setting = Setting::where('key', 'competetion_start')->first();
         return $setting->value == 1;
     }
+    public static function isCompetetionEnd()
+    {
+        $setting = Setting::where('key', 'competetion_start')->first();
+        return $setting->value == 2;
+    }
 }
