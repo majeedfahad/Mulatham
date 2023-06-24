@@ -9,7 +9,7 @@ class Elimination extends Model
 {
     use HasFactory;
 
-    public static function fight($attacker, $target, $targetName)
+    public static function fight(User $attacker, User $target, $targetName)
     {
         $result = null;
         $elimination = new Elimination();

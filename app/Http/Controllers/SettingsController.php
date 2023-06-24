@@ -17,28 +17,28 @@ class SettingsController extends Controller
 
     public function admin()
     {
-        $settings = DB::table('settings')->get();
+        $settings = Setting::all();
+
         return view('admin.settings', compact('settings'));
     }
 
     public function users()
     {
-        $users = User::where('role', 0)->orderBy('status', 'desc')->get();
+        $users = User::query()->competitors()->orderBy('status', 'desc')->get();
+
         return view('admin.users', compact('users'));
     }
 
     public function activeSetting($id)
     {
-        $setting = Setting::find($id);
-        $setting->value = 1;
-        $setting->update();
+        Setting::find($id)->update(['value' => 1]);
+
         return back();
     }
     public function deActiveSetting($id)
     {
-        $setting = Setting::find($id);
-        $setting->value = 0;
-        $setting->update();
+        Setting::find($id)->update(['value' => 0]);
+
         return back();
     }
 
@@ -49,7 +49,7 @@ class SettingsController extends Controller
         $targetName = $request['target'];
         $result = Elimination::fight($attacker, $target, $targetName);
 
-        if($result) 
+        if($result)
             return back()->with(['success' => 'صح عليك! مبروك عليك نقاطه']);
         return back()->with(['failed' => 'لاااي لاي لاي لاااي، فمان الله ونقاطك راحت له']);
     }
