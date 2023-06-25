@@ -21,6 +21,10 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
+    @vite([
+        'resources/sass/app.scss',
+        'resources/js/app.js',
+    ])
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/homeStyle.css') }}">
@@ -34,7 +38,7 @@
         <nav class="navbar navbar-expand-md navbar-light shadow-sm">
             <div class="container">
                 <a class="navbar-brand text-white" href="#" onclick="event.preventDefault()" class="">
-                        
+
                         @if (Auth::user()->isAdmin())
                             هلا بالمدير
                             <a href="{{route('settings.index')}}" class="btn btn-sm btn-outline-info">الإعدادات</a>
@@ -45,7 +49,7 @@
                             class="btn btn-sm btn-outline-info"
                             onclick="event.preventDefault();
                                         document.getElementById('logout-form').submit();">تسجيل الخروج</a>
-            
+
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                 @csrf
                             </form>
@@ -70,7 +74,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
     crossorigin="anonymous"></script>
-    
+
     @stack('scripts')
 </body>
 </html>
