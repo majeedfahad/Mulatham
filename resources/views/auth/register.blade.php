@@ -53,7 +53,7 @@
                         </span>
                     @enderror
                 </div>
-                <button class="btn btn-info text-left mt-2" type="submit" style="background: #476D7C;">كن يحياويًا!</button>
+                <button class="btn btn-info text-left mt-2" type="submit" style="background: #476D7C;">ورنا مشيك في الصروال!</button>
             </form>
         </div>
     </div>

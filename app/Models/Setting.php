@@ -9,6 +9,8 @@ class Setting extends Model
 {
     use HasFactory;
 
+    protected $guarded = [];
+
     public static function isCompetetionStart()
     {
         $setting = Setting::where('key', 'competetion_start')->first();
