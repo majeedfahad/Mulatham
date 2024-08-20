@@ -35,7 +35,7 @@ class HomeController extends Controller
         $question = Question::where('status', 1)->first();
         $listOfUsers = User::where('role', '<>', 1);
         $users = $listOfUsers->where('status', 1)->get();
-        $activeUsers = $listOfUsers->where('status', 1)->orderBy('score', 'desc')->get();
+        $activeUsers = $listOfUsers->active()->orderBy('score', 'desc')->orderBy('order', 'asc')->get();
         $eliminatedUsers = User::where('status', 0)->get();
         // $winners = $listOfUsers->where('status', 1)->orderBy(DB::raw("`score` + `hidden_score`"), 'desc')->get();
         $winners = User::getWinners();
@@ -57,12 +57,12 @@ class HomeController extends Controller
             $answer->user_id = $user->id;
             $answer->question_id = $question_id;
 
-            
+
             if($request['answer']) $answer->answer = $request['answer'];
 
             $answer->answer;
             $answer->answer_id = $request['answer'] ? null : $request['selectedAnswer'];
-            
+
             $answer->save();
 
             $answer->assignScore($question_id);
@@ -73,7 +73,5 @@ class HomeController extends Controller
                 return redirect()->route('home')->with(['success' => 'وصلت إجابتك، فالك التوفيق']);
             }
         }
-        
-
     }
 }

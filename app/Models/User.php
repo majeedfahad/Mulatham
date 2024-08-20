@@ -16,12 +16,7 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $fillable = [
-        'name',
-        'fakename',
-        'password',
-        'order',
-    ];
+    protected $guarded = [];
 
     /**
      * The attributes that should be hidden for arrays.
@@ -57,6 +52,11 @@ class User extends Authenticatable
         return $query->where('role', 0);
     }
 
+    public function scopeActive($query)
+    {
+        return $query->where('status', 1);
+    }
+
     public function answers()
     {
         return $this->hasMany(AnswerUser::class);
@@ -78,8 +78,7 @@ class User extends Authenticatable
 
     public function eliminate()
     {
-        $this->status = 0;
-        $this->update();
+        $this->update(['status' => 0]);
     }
 
     public function assignFailedEliminationScore($score)
@@ -109,11 +108,27 @@ class User extends Authenticatable
 
     public static function getWinners()
     {
-        $users = User::where('status', 1)->get();
-        $collection = collect($users);
-        $winners = $collection->sortByDesc(function ($user, $key) {
-            return [$user->getTotalScore(), 'desc'];
+        $winners = User::query()
+            ->competitors()
+            ->active()
+            ->get()
+            ->sortByDesc(function ($user) {
+            return $user->getTotalScore();
         });
+
         return $winners->values()->all();
+    }
+
+    public function refreshScore()
+    {
+        $finalScore = $this->answers->map->score->sum();
+        $finalScore += Elimination::where('status', 'FAILED')
+            ->where('target_id', $this->id)
+            ->get()->map->points->sum();
+
+        $this->update(['score' => $finalScore]);
+        $this->refresh();
+
+        return $this->score;
     }
 }

@@ -59,7 +59,7 @@
                                     <div class="form-group text-right">
                                         <label for="message-text" class="col-form-label">المدعي:</label>
                                         <select name="attacker" class="form-control">
-                                            @foreach ($users as $user)
+                                            @foreach ($users->shuffle() as $user)
                                             <option value="{{$user->id}}">{{$user->name}}</option>
                                             @endforeach
                                         </select>
@@ -72,7 +72,7 @@
                                     <div class="form-group text-right">
                                         <label for="message-text" class="col-form-label">اسمه:</label>
                                         <select name="target" class="form-control">
-                                            @foreach ($users as $user)
+                                            @foreach ($users->shuffle() as $user)
                                             <option value="{{$user->name}}">{{$user->name}}</option>
                                             @endforeach
                                         </select>
@@ -121,7 +121,8 @@
             <div class="col-12 offset-1 align-self-center p-2 rounded rounded-lg-0 mt-3 ml-0">
                 <h2 class="d-flex d-sm-flex justify-content-center text-info font-weight-light mb-2"><img
                         class="d-flex justify-content-sm-center" src="{{asset('imgs/logo.png')}}" style="height: 200px;"></h2>
-                <h2 class="text-center text-white">هلا باليحياوي! ننتظر باقي المتسابقين</h2>
+                <h2 class="text-center text-white">هلا بالفارس! ننتظر طويل العمر يبدأ المسابقة</h2>
+                <p class="text-center text-white">بالمناسبة ترتيب المتسابقين اللي بيطلع لك عشوائي، خد بالك وماتفضحش نفسك ;)</p>
             </div>
         @endif
     </div>
