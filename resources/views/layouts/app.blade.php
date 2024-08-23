@@ -19,13 +19,13 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
-    @vite([
-        'resources/sass/app.scss',
-        'resources/js/app.js',
-    ])
-{{--    <link href="{{ asset('css/app.css') }}" rel="stylesheet">--}}
-{{--    <link href="{{ asset('css/custom.css') }}" rel="stylesheet">--}}
-{{--    <link rel="stylesheet" href="{{ asset('css/homeStyle.css') }}">--}}
+{{--    @vite([--}}
+{{--        'resources/sass/app.scss',--}}
+{{--        'resources/js/app.js',--}}
+{{--    ])--}}
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/homeStyle.css') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     @stack('styles')
 </head>
